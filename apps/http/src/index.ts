@@ -21,6 +21,24 @@ app.get('/checkdb', async(req, res)=>{
     })
 })
 
+app.get("/getUserById", async(req, res)=>{
+    const {id} = req.body;
+
+    if(!id){
+        return res.status(400).json({
+            message: "id not found"
+        })
+    }
+
+    const user = await client.user.findFirst({
+        where:{
+            id
+        }
+    })
+
+    return res.status(200).json({"user": user?.username});
+})
+
 async function startServer(){
     await client.$connect()
     app.listen(3000, ()=>{
