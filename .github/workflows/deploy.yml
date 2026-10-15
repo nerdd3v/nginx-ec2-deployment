@@ -12,4 +12,5 @@ jobs:
         steps:
             - run: |
                 echo "${{ secrets.SSH_KEY }}" > ~/ssh_key
+                chmod 700 ~/ssh_key
                 ssh -o "StrictHostKeyChecking=no" -i ~/ssh_key ubuntu@15.135.79.124
