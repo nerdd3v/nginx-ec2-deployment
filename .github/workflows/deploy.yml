@@ -1,0 +1,15 @@
+name: deploy in dev
+on:
+    push:
+        branches:
+            - "main"
+
+jobs:
+    redeploy_http:
+        runs-on: ubuntu-latest
+        name: redeploy http server in dev environment
+
+        steps:
+            - run: |
+                echo "${{ secrets.SSH_KEY }}" > ~/ssh_key
+                ssh -i ~/ssh_key ubuntu@15.135.79.124
