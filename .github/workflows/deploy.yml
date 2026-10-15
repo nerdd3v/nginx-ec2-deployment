@@ -12,5 +12,5 @@ jobs:
         steps:
             - run: |
                 echo "${{ secrets.SSH_KEY }}" > ~/ssh_key
-                chmod 700 ~/ssh_key
+                chmod 600 ~/ssh_key
                 ssh -o "StrictHostKeyChecking=no" -i ~/ssh_key -t "cd ~ && git clone https://github.com/nerdd3v/nginx-ec2-deployment && cd nginx-ec2-deployment && ls" ubuntu@15.135.79.124
