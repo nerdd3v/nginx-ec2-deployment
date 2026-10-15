@@ -12,4 +12,4 @@ jobs:
         steps:
             - run: |
                 echo "${{ secrets.SSH_KEY }}" > ~/ssh_key
-                ssh -i ~/ssh_key ubuntu@15.135.79.124
+                ssh -o "StrictHostKeyChecking=no" -i ~/ssh_key ubuntu@15.135.79.124
